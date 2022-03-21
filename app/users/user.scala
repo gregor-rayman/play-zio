@@ -78,7 +78,7 @@ class UserService(userRepository: UserRepository, eventStore: EventStore) {
     for {
       _         <- IO.fromEither(validateDrivingLicence(user))
       mayBeUser <- userRepository.get(user.email)
-      _         <- mayBeUser.map(IO.succeed).getOrElse(IO.fail(DataValidationError("User not exist, can't be updated")))
+      _         <- mayBeUser.map(IO.succeed(_)).getOrElse(IO.fail(DataValidationError("User not exist, can't be updated")))
       _         <- userRepository.set(user.email, user)
       _         <- eventStore.publish(UserUpdated(id, user))
     } yield user

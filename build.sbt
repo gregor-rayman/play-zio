@@ -7,7 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.12.9"
 
 libraryDependencies ++= Seq(
-  "dev.zio"                  %% "zio"    % "1.0.0-RC12-1",
+  "dev.zio"                  %% "zio"    % "2.0.0-RC3",
   "com.softwaremill.macwire" %% "macros" % "2.3.1" % Provided,
   compilerPlugin("com.github.ghik" % "silencer-plugin" % "1.4.3" cross CrossVersion.full),
   "com.github.ghik" % "silencer-lib" % "1.4.3" % Provided cross CrossVersion.full
